@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using Tests.Models;
+using Tests.Repositories;
 
 namespace Tests
 {
@@ -7,12 +9,18 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+        
         }
 
         [Test]
-        public void Test1()
+        public void GetUserById()
         {
-            Assert.Pass();
+            IUsersRepository userRepository = new UsersRepositoryVk();
+            User user = userRepository.GetUserById("154951306");
+            
+            Assert.AreEqual("Аня", user.FirstName);
+            Assert.AreEqual("Зановская",user.LastName);
+            
         }
     }
 }

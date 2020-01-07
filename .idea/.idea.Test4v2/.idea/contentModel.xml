@@ -27,6 +27,12 @@
       <e p="Test4v2.sln" t="IncludeFlat" />
       <e p="TestVkApi" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Client" t="Include">
+          <e p="WebClient.cs" t="Include" />
+        </e>
+        <e p="Models" t="Include">
+          <e p="User.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp2.1" t="Include">
@@ -34,6 +40,11 @@
               <e p="TestVkApi.Program.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Repository" t="Include">
+          <e p="IUsersRepository.cs" t="Include" />
+          <e p="UserRepositoryMock.cs" t="Include" />
+          <e p="UserRepositoryVk.cs" t="Include" />
         </e>
         <e p="TestVkApi.csproj" t="IncludeRecursive" />
         <e p="UnitTest1.cs" t="Include" />
