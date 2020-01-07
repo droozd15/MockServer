@@ -1,6 +1,7 @@
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
+using MockServer;
 using NUnit.Framework;
 
 namespace Tests
@@ -17,15 +18,21 @@ namespace Tests
         {
             Ping ping = new Ping();
 
-            PingReply pingReply = ping.Send(new IPAddress(new byte[]{127, 0, 0, 1}), 1000);
-            
+            PingReply pingReply = ping.Send(new IPAddress(new byte[] {127, 0, 0, 1}), 1000);
+
             Assert.AreEqual(pingReply.Status, IPStatus.Success);
         }
 
         [Test]
         public void CanReceiveMessage()
         {
-            WebRequest webRequest = WebRequest.Create("http://localhost:8080/test/");
+            Server server = new Server();
+
+            server.Start();
+
+            Assert.AreEqual(true, server.IsStart);
+
+            WebRequest webRequest = WebRequest.Create("http://localhost:8080/test");
 
             webRequest.Credentials = CredentialCache.DefaultCredentials;
 
@@ -37,10 +44,11 @@ namespace Tests
 
             string responseFromServer = streamReader.ReadToEnd();
 
-            Assert.AreEqual("Hello, world!", responseFromServer);
+            Assert.AreEqual("\"Hello, world!\"", responseFromServer);
 
             stream.Close();
             response.Close();
+            server.Stop();
         }
     }
 }
