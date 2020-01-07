@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockServer", "MockServer\MockServer.csproj", "{39E4580C-DCBF-4819-906B-DDAE94153A5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestVkApi", "TestVkApi\TestVkApi.csproj", "{5E5896B1-E5B5-4E13-9D9B-50FDAD91D291}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39E4580C-DCBF-4819-906B-DDAE94153A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39E4580C-DCBF-4819-906B-DDAE94153A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39E4580C-DCBF-4819-906B-DDAE94153A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39E4580C-DCBF-4819-906B-DDAE94153A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E5896B1-E5B5-4E13-9D9B-50FDAD91D291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E5896B1-E5B5-4E13-9D9B-50FDAD91D291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E5896B1-E5B5-4E13-9D9B-50FDAD91D291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E5896B1-E5B5-4E13-9D9B-50FDAD91D291}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
