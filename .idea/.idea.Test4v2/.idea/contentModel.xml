@@ -57,6 +57,10 @@
           <e p="UserRepositoryMock.cs" t="Include" />
           <e p="UserRepositoryVk.cs" t="Include" />
         </e>
+        <e p="Services" t="Include">
+          <e p="GroupService.cs" t="Include" />
+          <e p="UserService.cs" t="Include" />
+        </e>
         <e p="TestVkApi.csproj" t="IncludeRecursive" />
         <e p="UnitTest1.cs" t="Include" />
       </e>

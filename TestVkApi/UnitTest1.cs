@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Tests.MockServer;
 using Tests.Models;
 using Tests.Repositories;
+using Tests.Services;
 
 namespace Tests
 {
@@ -18,7 +19,9 @@ namespace Tests
         public void GetUserById()
         {
             IUsersRepository userRepository = new UsersRepositoryVk();
-            User user = userRepository.GetUserById("154951306");
+            UserService userService = new UserService(userRepository);
+            
+            User user = userService.GetUserById("154951306");
             
             Assert.AreEqual("Аня", user.FirstName);
             Assert.AreEqual("Зановская",user.LastName);
@@ -28,9 +31,9 @@ namespace Tests
         [Test]
         public void GetUserByIdMock()
         {
-           
             IUsersRepository userRepository = new UsersRepositoryMock();
-            User user = userRepository.GetUserById("154951306");
+            UserService userService = new UserService(userRepository);
+            User user = userService.GetUserById("154951306");
             
             Assert.AreEqual("Аня", user.FirstName);
             Assert.AreEqual("Зановская",user.LastName);
@@ -41,7 +44,8 @@ namespace Tests
         public void GetGroupByIdVk()
         {
             IGroupRepository groupRepository = new GroupRepositoryVk();
-            Group group = groupRepository.GetById("155418187");
+            GroupService groupService = new GroupService(groupRepository);
+            Group group = groupService.GetById("155418187");
             
             Assert.AreEqual("Папуги :>",group.Name);
             Assert.AreEqual("papugi",group.ScreenName);
@@ -51,7 +55,8 @@ namespace Tests
         public void GetGroupByIdMock()
         {
             IGroupRepository groupRepository = new GroupRepositoryMock();
-            Group group = groupRepository.GetById("155418187");
+            GroupService groupService = new GroupService(groupRepository);
+            Group group = groupService.GetById("155418187");
             
             Assert.AreEqual("Папуги :>",group.Name);
             Assert.AreEqual("papugi",group.ScreenName);
@@ -62,7 +67,8 @@ namespace Tests
         public void GetGroupByUserIdVK()
         {
             IGroupRepository groupRepository = new GroupRepositoryVk();
-            List<Group> groups = groupRepository.Get("154951306","5");
+            GroupService groupService = new GroupService(groupRepository);
+            List<Group> groups = groupService.Get("154951306","5");
             
             Assert.AreEqual(5,groups.Count);
             
@@ -73,13 +79,15 @@ namespace Tests
         public void GetGroupByUserIdMock()
         {
             IGroupRepository groupRepository = new GroupRepositoryMock();
-            List<Group> groups = groupRepository.Get("154951306","5");
+            GroupService groupService = new GroupService(groupRepository);
+            List<Group> groups = groupService.Get("154951306","5");
     
             Assert.AreEqual(3,groups.Count);
     
             Assert.AreEqual("Папуги :>",groups[2].Name);
         }
 
+      
         
      }
 }
