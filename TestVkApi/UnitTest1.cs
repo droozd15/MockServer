@@ -38,7 +38,7 @@ namespace Tests
         }
         
         [Test]
-        public void GetGroupById()
+        public void GetGroupByIdVk()
         {
             IGroupRepository groupRepository = new GroupRepositoryVk();
             Group group = groupRepository.GetById("155418187");
@@ -47,9 +47,19 @@ namespace Tests
             Assert.AreEqual("papugi",group.ScreenName);
             
         }
+        [Test]
+        public void GetGroupByIdMock()
+        {
+            IGroupRepository groupRepository = new GroupRepositoryMock();
+            Group group = groupRepository.GetById("155418187");
+            
+            Assert.AreEqual("Папуги :>",group.Name);
+            Assert.AreEqual("papugi",group.ScreenName);
+            
+        }
         
         [Test]
-        public void GetGroupByUserId()
+        public void GetGroupByUserIdVK()
         {
             IGroupRepository groupRepository = new GroupRepositoryVk();
             List<Group> groups = groupRepository.Get("154951306","5");
@@ -58,7 +68,18 @@ namespace Tests
             
             Assert.AreEqual("Папуги :>",groups[2].Name);
         }
-        
+                
+        [Test]
+        public void GetGroupByUserIdMock()
+        {
+            IGroupRepository groupRepository = new GroupRepositoryMock();
+            List<Group> groups = groupRepository.Get("154951306","5");
+    
+            Assert.AreEqual(3,groups.Count);
+    
+            Assert.AreEqual("Папуги :>",groups[2].Name);
+        }
+
         
      }
 }

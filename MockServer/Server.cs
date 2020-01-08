@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -86,6 +87,45 @@ namespace MockServer
                     };
                     SendMessageToClient(user,response);
                     break;
+                case "/method/groups/getById/155418187":
+                    Group group = new Group()
+                    {
+                        Id = "155418187",
+                        Name = "Папуги :>",
+                        ScreenName = "papugi",
+                        IsClosed = false
+                    };
+                    SendMessageToClient(group,response);
+                    break;
+                case "/method/groups/get/154951306":
+                    List<Group> groups = new List<Group>();
+                    Group tgroup = new Group()
+                    {
+                        Id = "2335904",
+                        Name = "ИЭИТУС БГТУ им. В.Г. Шухова",
+                        ScreenName = "so_ieitus",
+                        IsClosed = false
+                    };
+                    groups.Add(tgroup);
+                    tgroup = new Group()
+                    {
+                        Id = "186726568",
+                        Name = "веские поводы бросить универ",
+                        ScreenName = "dasviduli.univerr",
+                        IsClosed = false
+                    };
+                    groups.Add(tgroup);
+                    tgroup = new Group()
+                    {
+                        Id = "155418187",
+                        Name = "Папуги :>",
+                        ScreenName = "papugi",
+                        IsClosed = false
+                    };
+                    groups.Add(tgroup);
+                    SendMessageToClient(groups,response);
+                    break;
+
             }
 
         }
