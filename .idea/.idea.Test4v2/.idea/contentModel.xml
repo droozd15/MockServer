@@ -31,6 +31,7 @@
           <e p="WebClient.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
+          <e p="Group.cs" t="Include" />
           <e p="User.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -42,6 +43,9 @@
           </e>
         </e>
         <e p="Repository" t="Include">
+          <e p="GroupRepositoryMock.cs" t="Include" />
+          <e p="GroupRepositoryVk.cs" t="Include" />
+          <e p="IGroupRepository.cs" t="Include" />
           <e p="IUsersRepository.cs" t="Include" />
           <e p="UserRepositoryMock.cs" t="Include" />
           <e p="UserRepositoryVk.cs" t="Include" />
