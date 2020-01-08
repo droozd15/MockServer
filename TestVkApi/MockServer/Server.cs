@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Tests.Models;
 
-namespace MockServer
+namespace Tests.MockServer
 {
-   public class Server
+    public class Server
     {
         private HttpListener _listener;
 
@@ -33,7 +34,8 @@ namespace MockServer
         public void Stop()
         {
             IsStart = false;
-            _listener.Stop();
+                // _listener.Stop();
+            _listener.Close();
         }
 
         private void StartServer()
@@ -85,6 +87,10 @@ namespace MockServer
                         IsClosed = false
                     };
                     SendMessageToClient(user,response);
+                    break;
+                default:
+                    string fail = "Fail!";
+                    SendMessageToClient(fail,response);
                     break;
             }
 

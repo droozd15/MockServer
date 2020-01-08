@@ -26,6 +26,18 @@ namespace Tests
         }
         
         [Test]
+        public void GetUserByIdMock()
+        {
+           
+            IUsersRepository userRepository = new UsersRepositoryMock();
+            User user = userRepository.GetUserById("154951306");
+            
+            Assert.AreEqual("Аня", user.FirstName);
+            Assert.AreEqual("Зановская",user.LastName);
+
+        }
+        
+        [Test]
         public void GetGroupById()
         {
             IGroupRepository groupRepository = new GroupRepositoryVk();
@@ -46,6 +58,7 @@ namespace Tests
             
             Assert.AreEqual("Папуги :>",groups[2].Name);
         }
-       
-    }
+        
+        
+     }
 }
