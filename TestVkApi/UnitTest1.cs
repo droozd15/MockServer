@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using Tests.MockServer;
 using Tests.Models;
 using Tests.Repositories;
 
@@ -34,5 +35,17 @@ namespace Tests
             Assert.AreEqual("papugi",group.ScreenName);
             
         }
+        
+        [Test]
+        public void GetGroupByUserId()
+        {
+            IGroupRepository groupRepository = new GroupRepositoryVk();
+            List<Group> groups = groupRepository.Get("154951306","5");
+            
+            Assert.AreEqual(5,groups.Count);
+            
+            Assert.AreEqual("Папуги :>",groups[2].Name);
+        }
+       
     }
 }

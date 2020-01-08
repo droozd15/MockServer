@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using Tests.Client;
 using Tests.Models;
@@ -35,5 +36,32 @@ namespace Tests.Repositories
             
         }
         
+        public List<Group> Get(string id, string count)
+        {
+            
+            string request = $"{url}groups.get?user_id={id}&count={count}&extended={"1"}&access_token={accessToken}&v=5.103";
+            WebClient webClient = new WebClient();
+            string json = webClient.SendRequest(request, "GET");
+            return ParseList(json);
+        }
+        
+        private List<Group> ParseList(string json)
+        {
+            JObject groupJObject = JObject.Parse(json);
+            JToken groupInfo = groupJObject["response"]["items"];
+            List<Group> groups = new List<Group>();
+
+            for (int i = 0; i < groupInfo.Count(); i++)
+            {
+                Group group = new Group();
+                group.Id = groupInfo[i]["id"].ToString();
+                group.Name = groupInfo[i]["name"].ToString();
+                group.ScreenName = groupInfo[i]["screen_name"].ToString();
+                group.IsClosed = (bool)groupInfo[i]["is_closed"];
+                groups.Add(group);
+            }
+            return groups;
+            
+        }
     }
 }

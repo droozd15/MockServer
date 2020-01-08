@@ -9,5 +9,9 @@ namespace Tests.Repositories
         {
             throw new System.NotImplementedException();
         }
+        public List<Group> Get(string id, string count)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
